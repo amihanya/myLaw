@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<ranway1>
+		<bg folder="images/ranway1/bg/">
+			<image>runway1_out_random_01.jpg</image>
+            <image>runway1_out_random_02.jpg</image>
+            <image>runway1_out_random_01.jpg</image>
+            <image>runway1_out_random_02.jpg</image>
+            <image>runway1_out_random_01.jpg</image>
+            <image>runway1_out_random_02.jpg</image>
+            <image>runway1_out_random_01.jpg</image>
+            <image>runway1_out_random_02.jpg</image>
+            <image>runway1_out_random_01.jpg</image>
+            <image>runway1_out_random_02.jpg</image>
+            <image>runway1_out_random_02.jpg</image>
+			<image>runway1_out_random_01.jpg</image>
+			<image>runway1_out_random_03.jpg</image>
+			<image>runway1_out_random_03.jpg</image>
+			<image>runway1_out_random_04.jpg</image>
+			<image>runway1_unique_desk.jpg</image>
+			<image>runway1_unique_doors.jpg</image>
+			<image>runway1_in_random_01.jpg</image>
+			<image>runway1_in_random_02.jpg</image>
+		</bg>
+        <people>
+            
+        </people>
+	</ranway1>
+    
+    <character>
+        <bg>images/character/screen/cs_bg.jpg</bg>
+        <header>
+            <header_bg>images/character/screen/cs_header.png</header_bg>
+            <headline>images/character/screen/cs_headline.png</headline>
+        </header>
+        <menu>
+            <small widht="544">images/character/screen/cs_box_02.png</small>
+            <narrow widht="686">images/character/screen/cs_box_03.png</narrow>
+            <wide widht="686">images/character/screen/cs_box_01.png</wide>
+            <arrow-left>images/character/screen/cs_arrow-btn_left_reg.png</arrow-left>
+            <arrow-right>images/character/screen/cs_arrow-btn_right_reg.png</arrow-right>
+            
+                <frame>
+                    <big_up>images/character/screen/cs_choose-btn_reg.png</big_up>
+                    <big_selected>images/character/screen/cs_choose-btn_on.png</big_selected>
+                    <small_up>images/character/screen/cs_choose-btn_s_reg.png</small_up>
+                    <small_selected>images/character/screen/cs_choose-btn_s_on.png</small_selected>
+                </frame>
+        </menu>
+    </character>
+    
+    
+    
+    <map>
+        <bg>images\map/map_bg.png</bg>
+        <continue type="button">
+            <up>images/map/continue_btn_reg.png</up>
+            <over>images/map/continue_btn_over.png</over>
+            <down>images/map/continue_btn_on.png</down>
+        </continue>
+        <levelBox>
+            <info_btn type="button">
+                <up>images/map/map_info_reg.png</up>
+                <over>images/map/map_info_over.png</over>
+                <down>images/map/map_info_on.png</down>
+            </info_btn>
+           
+            <level1>
+                <a>images/map/level1_a.png</a>
+                <b>images/map/level1_b.png</b>
+                <c>images/map/level1_c.png</c>
+                <lock>images/map/level1_lock.png</lock>
+                <info>images/map/infobox1.png</info>
+            </level1>
+            <level2>
+                <a>images/map/level2_a.png</a>
+                <b>images/map/level2_b.png</b>
+                <c>images/map/level2_c.png</c>
+                <lock>images/map/level2_lock.png</lock>
+                <info>images/map/infobox2.png</info>
+            </level2>
+            <level3>
+                <a>images/map/level3_a.png</a>
+                <b>images/map/level3_b.png</b>
+                <c>images/map/level3_c.png</c>
+                <lock>images/map/level3_lock.png</lock>
+                <info>images/map/infobox3.png</info>
+            </level3>
+            <level4>
+                <a>images/map/level4_a.png</a>
+                <b>images/map/level4_b.png</b>
+                <c>images/map/level4_c.png</c>
+                <lock>images/map/level4_lock.png</lock>
+                <info>images/map/infobox4.png</info>
+            </level4>
+            <level5>
+                <a>images/map/level5_a.png</a>
+                <b>images/map/level5_b.png</b>
+                <c>images/map/level5_c.png</c>
+                <lock>images/map/level5_lock.png</lock>
+                <info>images/map/infobox5.png</info>
+            </level5>
+            
+        </levelBox>
+        
+    </map>
+    
+    
+     <ui>
+        
+         <top>
+             <fullView>images/ranway1/ui/top_runway.png</fullView>
+             <mediumView>images/ranway1/ui/top_mission_big.png</mediumView>
+             <smallView>images/ranway1/ui/top_mission_small.png</smallView>
+             <userNameBg>images/ranway1/ui/name_shild.png</userNameBg>
+             <diamond_small>images/ranway1/ui/diamond_small_fix.png</diamond_small>
+             <diamond_small_megaphone>images/ranway1/ui/diamond_small_megaphone.png</diamond_small_megaphone>
+             <diamond_small_research>images/ranway1/ui/diamond_small_research.png</diamond_small_research>
+             <logo>images/ranway1/ui/logo.png</logo>
+         </top>
+         <down>
+            <levelText>שלב</levelText>
+            <bg>images/ranway1/ui/bottom_full.png</bg>
+            <law_btn type="button">
+                <text><![CDATA[החוק שלי]]></text>
+                <up>images/ranway1/ui/law_btn_reg.png</up>
+                <over>images/ranway1/ui/law_btn_over.png</over>
+                <down>images/ranway1/ui/law_btn_on.png</down>
+            </law_btn>
+            
+            <sound_btn type="button">
+                
+                <up>images/ranway1/ui/sound_btn_reg.png</up>
+                <over>images/ranway1/ui/sound_btn_over.png</over>
+                <down>images/ranway1/ui/sound_btn_on.png</down>
+            </sound_btn> 
+            <info_btn type="button">
+                <text><![CDATA[כדאי לדעת]]></text>
+                <up>images/ranway1/ui/info_btn_reg.png</up>
+                <over>images/ranway1/ui/info_btn_over.png</over>
+                <down>images/ranway1/ui/info_btn_on.png</down>
+            </info_btn>
+        </down>
+        
+    </ui>
+</data>
