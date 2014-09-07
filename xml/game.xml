@@ -29,6 +29,27 @@
     
     <character>
         <bg>images/character/screen/cs_bg.jpg</bg>
+        <top-menu>
+            <radio-button>
+                <reg>images/character/screen/cs_radiobtn_reg.png</reg>
+                <over>images/character/screen/cs_radiobtn_over.png</over>
+                <on>images/character/screen/cs_radiobtn_on.png</on>
+            </radio-button>
+            <color-skin>
+                <white>
+                    <up>images/character/screen/cs_skin_white_reg.png</up>
+                    <on>images/character/screen/cs_skin_white_on.png</on>
+                </white>
+                <black>
+                    <up>images/character/screen/cs_skin_black_reg.png</up>
+                    <on>images/character/screen/cs_skin_black_on.png</on>
+                </black>
+                <brown>
+                    <up>images/character/screen/cs_skin_brown_reg.png</up>
+                    <on>images/character/screen/cs_skin_brown_on.png</on>
+                </brown>
+            </color-skin>
+        </top-menu>
         <header>
             <header_bg>images/character/screen/cs_header.png</header_bg>
             <headline>images/character/screen/cs_headline.png</headline>
@@ -48,7 +69,6 @@
                 </frame>
         </menu>
     </character>
-    
     
     
     <map>

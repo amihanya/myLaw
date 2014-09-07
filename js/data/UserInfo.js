@@ -40,7 +40,7 @@ this.js.UserInfo = this.js.UserInfo || {};
     UserInfo.HAIR_BOY_MAX = 35;
     UserInfo.BODY_BOY_MAX = 25;
     UserInfo.HAND_BOY_MAX = 5;
-    UserInfo.LEG_BOY_MAX = 10;
+    UserInfo.LEGS_BOY_MAX = 10;
     UserInfo.MOUSTACHE_BOY_MAX = 9;
     UserInfo.GLASSES_BOY_MAX = 3;
     

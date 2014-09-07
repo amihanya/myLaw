@@ -1,4 +1,4 @@
-js.menu = js.menu || {};
+js.character = js.character || {};
 (function(window) {
 
     function Menu(name,number,x,y,type,spriteSheet) {
@@ -17,12 +17,13 @@ js.menu = js.menu || {};
     }
 
     Menu.prototype = new createjs.Container();
+    Menu.prototype.speed = 10;
 
     Menu.prototype.Container_initialize = Menu.prototype.initialize;
 	
     Menu.HAIR   = "hair";
     Menu.BODY   = "body";
-    Menu.LEG    = "leg";
+    Menu.LEGS   = "legs";
     Menu.HAND   = "hand";
     Menu.MOUSTACHE = "moustache";
     Menu.GLASSESS = "glasses";
@@ -56,11 +57,11 @@ js.menu = js.menu || {};
         }
         if(Menu.SMALL == this.type)
         {
-            shapeWidth = 430;//* MAIN_SCALE;
+            this.shapeWidth = shapeWidth = 430;//* MAIN_SCALE;
             
         }else
         {
-           shapeWidth = 573 ;//* MAIN_SCALE;
+           this.shapeWidth = shapeWidth = 573 ;//* MAIN_SCALE;
         }
         this.shapeHeight = shapeHeight;
         this.shapeWidth = shapeWidth;
@@ -71,31 +72,37 @@ js.menu = js.menu || {};
          var shape = this.shape = new createjs.Shape();
         shape.x = 56  ;//* MAIN_SCALE;
         shape.y = 17  ;//* MAIN_SCALE;
-        shape.graphics.beginFill(0).drawRect(0, 0, shapeWidth ,shapeHeight /* MAIN_SCALE*/);
-        this.addChild(shape);
         
+        shape.graphics.beginFill("#000000").drawRect(0, 0, shapeWidth ,shapeHeight /* MAIN_SCALE*/);
+       // this.addChild(shape);
       
         
         this.imageCon =  new createjs.Container();
         this.imageCon.mask = shape;
         this.addChild(this.imageCon);
-        
-        for(var i=0;i<=js.UserInfo[String(this.name+"_"+js.UserInfo.gender+"_MAX").toUpperCase()];i++){
+        this.imageCon.x =0;
+        this.part_arr =new Array
+        this.partWidth = 150;
+        if(this.type == Menu.WIDE) this.partWidth = 200;
+       
+        this.maxOfPart = js.UserInfo[String(this.name+"_"+js.UserInfo.gender+"_MAX").toUpperCase()];
+       
+        for(var i=0;i < this.maxOfPart;i++){
           
           var key = "Build character "+ js.UserInfo.gender + "/"+js.UserInfo.gender+"_" + this.name + (i+1);
-          var part = new js.character.Part(this.spriteSheet,key,this.type);
-        if(this.type == Menu.WIDE){ 
-            part.x = i* 200+shape.x;
-         }else{ 
-            part.x = i * 150 + shape.x;
-         }   
+           
+          var part = new js.character.Part(this.spriteSheet,key,this.type); 
+            part.x = i * this.partWidth + shape.x+10;
             part.addEventListener("click",this.partSelect); 
             part.addEventListener("mouseover",this.partmouseover);
-             part.addEventListener("mouseout",this.partmouseout); 
-            
-            
+            part.addEventListener("mouseout",this.partmouseout); 
+           
+            this.part_arr.push(part);
           this.imageCon.addChild(part);
         }
+        
+    
+       
         this.imageCon.y= 30;
         //scaleMy(this.imageCon);
         
@@ -140,9 +147,10 @@ js.menu = js.menu || {};
         var shapeWidth = this.shapeWidth
         var button = new createjs.Shape();
         button.graphics.beginFill("#ff0000").drawRect(0, 0, 40 ,72);
-        
+        button.alpha = 0.01;
         
         this.conArrowRight = new createjs.Container();
+        this.conArrowRight.name = "right"; 
         this.conArrowRight.y = this.bg.height/2 + 20;
         this.conArrowRight.regY = 42;
         this.conArrowRight.x = shape.x+shapeWidth+10;
@@ -156,7 +164,10 @@ js.menu = js.menu || {};
         
        var  button1 = new createjs.Shape();
         button1.graphics.beginFill("#ff0000").drawRect(0, 0, 40 ,72);
+        button1.alpha = 0.01;
+        
         this.conArrowLeft = new createjs.Container();
+        this.conArrowLeft.name = "left";
                 
         this.arrowLeft = new createjs.Bitmap(this.xml.find("arrow-left").text());
         this.conArrowLeft.y = this.bg.height/2 + 20;
@@ -166,18 +177,76 @@ js.menu = js.menu || {};
         this.conArrowLeft.addChild(button1);
         this.addChild(this.conArrowLeft);
 
-        this.conArrowLeft.addEventListener("click",this.arrowRightClick );
-        this.conArrowRight.addEventListener("click",this.arrowRightClick );
+        this.conArrowLeft.addEventListener("mouseover",this.arrowLeftOver );
+        this.conArrowLeft.addEventListener("mouseout",this.arrowOut );
+        this.conArrowRight.addEventListener("mouseover",this.arrowRightOver );
+        this.conArrowRight.addEventListener("mouseout",this.arrowOut );
         this.conArrowLeft.cursor = "pointer";
         this.conArrowRight.cursor = "pointer";
+        
+    
     }
     
-    Menu.prototype.arrowRightClick = function(event){
-        
-        cl(event);
-        
+    Menu.prototype.arrowOut = function(event){
+        parent = event.currentTarget.parent;
+        parent.stopMove();
     }
+    Menu.prototype.stopMove = function(){
+        this.removeEventListener("tick",this.tickA);
+    }
+    Menu.prototype.arrowRightOver = function(event){
+        parent = event.currentTarget.parent;
+        parent.k = 1;
+        parent.moveCon();
+    }
+    
+      Menu.prototype.arrowLeftOver = function(event){
+          parent = event.currentTarget.parent;
+          parent.k = -1;
+          parent.moveCon();
+    }
+    
+   Menu.prototype.moveCon = function() 
+   {
+         this.addEventListener("tick", this.tickA);
+   }
   
+   Menu.prototype.tickA = function(event) 
+    {
+       var my = event.currentTarget;
+       my.makeXMove();
+   }
+    Menu.prototype.makeXMove = function(event) 
+    {
+        this.imageCon.x += this.k*this.speed;
+        //var stop = this.imageCon.children.length;
+        
+        for(var b=0;b < this.part_arr.length; b++)
+        {
+            var x = 66;
+            
+            var part = this.part_arr[b];
+            // && part.x <= this.imageCon.x + this.shapeWidth
+            if(part.x <= Math.abs(this.imageCon.x+50) || part.x >= Math.abs(this.imageCon.x-50) + this.shapeWidth){
+                part.visible = false;
+            }
+            else{
+                part.visible = true;
+            }
+       
+            
+        
+        }
+        if(this.imageCon.x>=0)
+        {
+            this.imageCon.x = 0;
+            this.stopMove();
+        }
+        else if(this.imageCon.x < -this.maxOfPart * this.partWidth + this.shapeWidth ){
+            this.imageCon.x = -this.maxOfPart * this.partWidth + this.shapeWidth  ;
+            this.stopMove();
+        }
+    }
     
     Menu.prototype.remove = function(event) 
     {

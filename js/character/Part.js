@@ -1,4 +1,4 @@
-js.part = js.part || {};
+js.character = js.character || {};
 (function(window) {
 
     function Part(spriteSheet,key,type) {
@@ -33,6 +33,7 @@ js.part = js.part || {};
         this.Container_initialize();
         var size = this.xml.find("frame");
        
+        this.cursor = "pointer";
         
        this.frame_reg = new createjs.Bitmap(size.find(this.size+"_up").text());
         this.addChild(this.frame_reg);
@@ -43,17 +44,18 @@ js.part = js.part || {};
         
         this.part = new createjs.Sprite(this.spriteSheet);
         this.part.gotoAndStop(this.key);
-        
+       
         
         this.selected = false;
         this.addChild(this.part);
+       
         
         
       }
 
     Part.prototype.selectMe = function(bol){
-        this.selected = bol;
-        this.frame_over.visible = true;
+        this.selected = !this.selected;
+        this.frame_over.visible = this.selected;
         
     }
     

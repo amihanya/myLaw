@@ -24,9 +24,9 @@ this.js.law = this.js.law || {};
     {
         GAME_XML = $(event.xml);
         //start the view;
-        //manager.loadCharacter();
+        manager.loadCharacter();
        // manager.loadMap();
-        manager.loadGame();
+        //manager.loadGame();
         
         
     }

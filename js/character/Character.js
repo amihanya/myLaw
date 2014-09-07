@@ -23,17 +23,11 @@ js.character = js.character || {};
     {
         this.Container_initialize();
         
-        //alert(this.xml.find("bg").text());
         this.bg = new createjs.Bitmap(this.xml.find("bg").text());
-        //this.makeBgSize(this.bg);
-        console.log(this.bg);
-    //   _layouter.addLayoutObject(this.bg, "TL", NaN, NaN, false, "None");
-      //  _layouter.updateLayout();
-        
         scaleMy(this.bg);
         this.addChild(this.bg);
-       /* this.ui = new js.law.run.ui.Ui(js.law.run.ui.Top.SMALL,true);
-        this.addChild(this.ui);*/
+        
+        
         //-------------------header----------------
         this.headerBg = new createjs.Bitmap(this.xml.find("header_bg").text());
         scaleMy(this.headerBg);
@@ -59,6 +53,9 @@ js.character = js.character || {};
         this.explanation.textAlign = "center";
         this.addChild(this.explanation);
         
+        this.topMenu = new js.character.TopMenu();
+        this.addChild(this.topMenu);
+        
         this.queue = new createjs.LoadQueue();
         this.queue.loadFile({id: "spritesheet_json" ,src: "images/character/"+js.UserInfo.gender+"_spritesheet/0.json" } );
         this.queue.loadFile({id: "spritesheet_img" ,src: "images/character/"+js.UserInfo.gender+"_spritesheet/0.png" } );
@@ -75,9 +72,6 @@ js.character = js.character || {};
         var data = this.queue.getResult("spritesheet_json");
         data.images = ["images/character/"+js.UserInfo.gender+"_spritesheet/0.png"];
        this.spriteSheet = new createjs.SpriteSheet(data);
-       /* var   player = new createjs.Sprite(spriteSheet,"run");
-        player.gotoAndStop("Build character boy/boy_hair10_CDa");
-            this.addChild(player);*/
         
         this.startMakeMenus();
     
@@ -85,22 +79,22 @@ js.character = js.character || {};
     
      Character.prototype.startMakeMenus = function()
     {
-         this.menu = new js.character.Menu(js.character.Menu.HAIR,4,10,90,js.character.Menu.NARROW,this.spriteSheet);
+         this.menu = new js.character.Menu(js.character.Menu.HAIR,4,10,85,js.character.Menu.NARROW,this.spriteSheet);
         this.addChild(this.menu);
         
-        this.menu = new js.character.Menu(js.character.Menu.MOUSTACHE,4,10,190,js.character.Menu.NARROW,this.spriteSheet);
+        this.menu = new js.character.Menu(js.character.Menu.MOUSTACHE,4,10,185,js.character.Menu.NARROW,this.spriteSheet);
         this.addChild(this.menu);
         
-        this.menu = new js.character.Menu(js.character.Menu.BODY,3,10,290,js.character.Menu.WIDE,this.spriteSheet);
+        this.menu = new js.character.Menu(js.character.Menu.BODY,3,10,285,js.character.Menu.WIDE,this.spriteSheet);
         this.addChild(this.menu);
         
-        this.menu = new js.character.Menu(js.character.Menu.LEG,3,10,390,js.character.Menu.WIDE,this.spriteSheet);
+        this.menu = new js.character.Menu(js.character.Menu.LEGS,3,10,400,js.character.Menu.WIDE,this.spriteSheet);
+         this.addChild(this.menu);
+        
+        this.menu = new js.character.Menu(js.character.Menu.GLASSESS,3,370,85,js.character.Menu.SMALL,this.spriteSheet);
         this.addChild(this.menu);
         
-        this.menu = new js.character.Menu(js.character.Menu.GLASSESS,3,370,90,js.character.Menu.SMALL,this.spriteSheet);
-        this.addChild(this.menu);
-        
-        this.menu = new js.character.Menu(js.character.Menu.HAND,3,370,190,js.character.Menu.SMALL,this.spriteSheet);
+        this.menu = new js.character.Menu(js.character.Menu.HAND,3,370,185,js.character.Menu.SMALL,this.spriteSheet);
         this.addChild(this.menu);
      }
      
